@@ -77,6 +77,10 @@ public class InscriberBlockEntity extends AENetworkPowerBlockEntity implements I
     // cycles from 0 - 16, at 8 it preforms the action, at 16 it re-enables the
     // normal routine.
     private boolean smash;
+    /**
+     * Purely visual on the client-side.
+     */
+    private boolean repeatSmash;
     private int finalStep;
     private long clientStart;
     private final AppEngInternalInventory topItemHandler = new AppEngInternalInventory(this, 1, 1);
@@ -365,6 +369,14 @@ public class InscriberBlockEntity extends AENetworkPowerBlockEntity implements I
             setClientStart(System.currentTimeMillis());
         }
         this.smash = smash;
+    }
+
+    public boolean isRepeatSmash() {
+        return repeatSmash;
+    }
+
+    public void setRepeatSmash(boolean repeatSmash) {
+        this.repeatSmash = repeatSmash;
     }
 
     public int getMaxProcessingTime() {

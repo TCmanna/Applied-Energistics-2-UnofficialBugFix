@@ -80,6 +80,9 @@ public final class InscriberTESR implements BlockEntityRenderer<InscriberBlockEn
             absoluteProgress = currentTime - blockEntity.getClientStart();
             if (absoluteProgress > 800) {
                 blockEntity.setSmash(false);
+                if (blockEntity.isRepeatSmash()) {
+                    blockEntity.setSmash(true);
+                }
             }
         }
 
