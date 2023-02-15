@@ -300,7 +300,7 @@ public class PartFluidStorageBus extends PartSharedStorageBus implements IMEMoni
 		this.handlerHash = newHandlerHash;
 		this.handler = null;
 		this.monitor = null;
-		if( target != null )
+		if( target != null && !target.getClass().getName().contains("mekanism.common.tile.TileEntityFluidTank") )
 		{
 			IMEInventory<IAEFluidStack> inv = this.getInventoryWrapper( target );
 			if( inv instanceof ITickingMonitor )
@@ -438,7 +438,7 @@ public class PartFluidStorageBus extends PartSharedStorageBus implements IMEMoni
 
 		final IFluidHandler fluidHandler = target.getCapability( CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, targetSide );
 
-		if( fluidHandler != null )
+		if( fluidHandler != null && !target.getClass().getName().contains("mekanism") && !target.getClass().getName().contains("TileEntityFluidTan"))
 		{
 			return Objects.hash( target, fluidHandler, fluidHandler.getTankProperties().length );
 		}

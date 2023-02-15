@@ -23,6 +23,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
+import appeng.api.implementations.items.IStorageCell;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -464,11 +465,12 @@ public class TileIOPort extends AENetworkInvTile implements IUpgradeableHost, IC
 
 	private boolean moveSlot( final int x )
 	{
-		final InventoryAdaptor ad = new AdaptorItemHandler( this.outputCells );
-		if( ad.addItems( this.inputCells.getStackInSlot( x ) ).isEmpty() )
-		{
-			this.inputCells.setStackInSlot( x, ItemStack.EMPTY );
-			return true;
+		if (this.inputCells.getStackInSlot(x).getItem() instanceof IStorageCell) {
+			final InventoryAdaptor ad = new AdaptorItemHandler(this.outputCells);
+			if (ad.addItems(this.inputCells.getStackInSlot(x)).isEmpty()) {
+				this.inputCells.setStackInSlot(x, ItemStack.EMPTY);
+				return true;
+			}
 		}
 		return false;
 	}

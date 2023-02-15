@@ -20,6 +20,10 @@ repositories {
     mavenLocal()
 
     maven {
+        url "https://cursemaven.com"
+    }
+
+    maven {
         name "Mobius"
         url "http://mobiusstrip.eu/maven"
     }
@@ -93,7 +97,7 @@ dependencies {
     compileOnly "mcjty.theoneprobe:TheOneProbe-1.12:${top_version}:api"
     compileOnly "cofh:CoFHCore:${cofhcore_version}:deobf"
     compileOnly "CraftTweaker2:CraftTweaker2-API:${crafttweaker_version}"
-	compileOnly "inventory-tweaks:InventoryTweaks:${inventorytweaks_version}:api"
+	compileOnly "curse.maven:inventory-tweaks-223094:2482482"
     compileOnly "team.chisel.ctm:CTM:${ctm_version}"
 
     // at runtime, use the full JEI jar
